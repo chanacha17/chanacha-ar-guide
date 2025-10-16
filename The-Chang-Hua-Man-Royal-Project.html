@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โครงการชั่งหัวมันตามพระราชดำริ</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body {
+            background-image: url('/images/120.png'); /* ใช้ภาพพื้นหลัง */
+            background-size: cover; /* ให้ภาพครอบคลุมทั้งหน้าจอ */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: hsl(0, 33%, 98%); /* สีข้อความที่เปลี่ยนให้เข้ากับพื้นหลัง */
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color:rgba(1, 139, 146, 0.9);/* สีพื้นหลังของ header */
+            border-radius: 0 0 20px 20px; /* มุมมนที่ด้านล่าง */
+        }
+        h1 {
+            font-size: 2.5em; /* ขนาดตัวอักษรหัวข้อ */
+            margin: 0; /* ไม่มีระยะห่างบนและล่าง */
+            color: #ffffff; /* สีข้อความเป็นสีขาว */
+        }
+        h2 {
+            font-size: 1.5em; /* ขนาดตัวอักษรสำหรับชื่อภาษาอังกฤษ */
+            color: rgba(255, 255, 255, 0.8); /* สีตัวอักษรชื่อภาษาอังกฤษ */
+            margin: 5px 0 0; /* ระยะห่างด้านบน */
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            backdrop-filter: blur(2px); /* เพิ่มความเบลอให้กับพื้นหลัง */
+            border-radius: 10px; /* เพิ่มมุมมนให้กับ main */
+            background: rgba(255, 255, 255, 0.9); /* พื้นหลังสีขาวโปร่งใส */
+            max-width: 800px; /* ขนาดสูงสุดของ main */
+            margin: auto; /* จัดกลางในหน้าจอ */
+            box-shadow: none; /* ไม่ใช้เงา */
+        }
+        model-viewer {
+            width: 80%; /* ขนาดโมเดล */
+            height: 500px; /* ความสูงของโมเดล */
+            margin: 20px 0;
+            border-radius: 10px; /* มุมมนของโมเดล */
+            box-shadow: none; /* ไม่ใช้เงา */
+            background: linear-gradient(to bottom, #27bfee, #ffffff); /* ไล่สีฟ้าไปขาว */
+        }
+        .image-container {
+            animation: float 3s ease-in-out infinite; /* ใช้อนิเมชั่นสำหรับลอย */
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0); /* เริ่มต้นที่ตำแหน่งเดิม */
+            }
+            50% {
+                transform: translateY(-10px); /* ลอยขึ้น 10px */
+            }
+            100% {
+                transform: translateY(0); /* กลับมาที่ตำแหน่งเดิม */
+            }
+        }
+        a {
+            background: linear-gradient(135deg, #1fa9d3 0%, #29b6f6 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 8px 25px rgba(31, 169, 211, 0.4), 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-family: 'Kanit', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        a::before {
+            content: '←';
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        a::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        a:hover::after {
+            left: 100%;
+        }
+
+        a:hover {
+            background: linear-gradient(135deg, #29b6f6 0%, #1fa9d3 100%);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(31, 169, 211, 0.5), 0 8px 15px rgba(0,0,0,0.15);
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color:rgba(1, 139, 146, 0.9); /* สีพื้นหลังของ footer */
+            border-radius: 20px;
+        }
+        .description-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(128, 0, 0, 0.7); /* แดงเลือดหมู */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>โครงการชั่งหัวมันตามพระราชดำริ</h1>
+        <h2>The Chang Hua Man Royal Project</h2> <!-- ชื่อภาษาอังกฤษ -->
+    </header>
+
+    <main>
+        <div class="image-container">
+            <img src="\images\3.jpg" alt="โครงการชั่งหัวมันตามพระราชดำริ" style="max-width: 100%; border-radius: 10px;">
+        </div>
+        <div class="description-box">
+            <p>โครงการชั่งหัวมันตามพระราชดำริ เป็นโครงการที่มีวัตถุประสงค์เพื่อพัฒนาคุณภาพชีวิตของประชาชนในพื้นที่ โดยการส่งเสริมการเกษตรและการอนุรักษ์สิ่งแวดล้อม</p>
+            <p><strong>สถานที่ตั้ง:</strong> ตำบลเขากระปุก อำเภอท่ายาง จังหวัดเพชรบุรี </p>
+            <p><strong>กิจกรรมที่น่าสนใจ:</strong> ชมฟาร์มเกษตร, เรียนรู้การทำเกษตรแบบยั่งยืน, เดินชมธรรมชาติ, ถ่ายรูปวิวทิวทัศน์</p>
+            <p><strong>เวลาเปิด-ปิด:</strong>  08:30 - 17:00 น.</p>
+            <p><strong>ค่าเข้าชม:</strong> ผู้ใหญ่: 20 บาท เด็ก 10 บาท ผู้สูงอายุ (60 ปีขึ้นไป) และเด็กอายุไม่เกิน 3 ปี: เข้าชมฟรี</p>
+        </div>
+        <model-viewer src="\model\Brilliant.glb" alt="Chang Hua Mun Royal Initiative Project 3D" auto-rotate camera-controls scale="1.5 1.5 1.5"></model-viewer>
+        <a href="getStarted.html">กลับไปที่หน้าหลัก</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 แนะนำสถานที่ท่องเที่ยวในเพชรบุรี</p>
+    </footer>
+</body>
+</html>

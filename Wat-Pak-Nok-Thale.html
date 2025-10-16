@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วัดปากนกทะเล</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- ใช้ฟอนต์ Roboto -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body {
+            background-image: url('/images/126.png'); /* ใช้ภาพพื้นหลัง */
+            background-size: cover; /* ให้ภาพครอบคลุมทั้งหน้าจอ */
+            margin: 0;
+            font-family: 'Roboto', sans-serif; /* ใช้ฟอนต์ Roboto */
+            color: hsl(0, 33%, 98%); /* สีข้อความที่เปลี่ยนให้เข้ากับพื้นหลัง */
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(1, 139, 146, 0.9); /* สีพื้นหลังของ header */
+            border-radius: 0 0 20px 20px; /* มุมมนที่ด้านล่าง */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 2.5em; /* ขนาดตัวอักษรหัวข้อ */
+            margin: 0; /* ไม่มีระยะห่างบนและล่าง */
+            color: #ffffff; /* สีข้อความเป็นสีขาว */
+        }
+        h2 {
+            font-size: 1.5em; /* ขนาดตัวอักษรสำหรับชื่อภาษาอังกฤษ */
+            color: rgba(255, 255, 255, 0.8); /* สีตัวอักษรชื่อภาษาอังกฤษ */
+            margin: 5px 0 0; /* ระยะห่างด้านบน */
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            backdrop-filter: blur(2px); /* เพิ่มความเบลอให้กับพื้นหลัง */
+            border-radius: 10px; /* เพิ่มมุมมนให้กับ main */
+            background: rgba(255, 255, 255, 0.9); /* พื้นหลังสีขาวโปร่งใส */
+            max-width: 800px; /* ขนาดสูงสุดของ main */
+            margin: auto; /* จัดกลางในหน้าจอ */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* เงาของ main */
+        }
+        model-viewer {
+            width: 80%; /* ขนาดโมเดล */
+            height: 500px; /* ความสูงของโมเดล */
+            margin: 20px 0;
+            border-radius: 10px; /* มุมมนของโมเดล */
+            box-shadow: none; /* ไม่ใช้เงา */
+            background: linear-gradient(to bottom, #27bfee, #ffffff); /* ไล่สีฟ้าไปขาว */
+        }
+        .image-container {
+            animation: float 3s ease-in-out infinite; /* ใช้อนิเมชั่นสำหรับลอย */
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0); /* เริ่มต้นที่ตำแหน่งเดิม */
+            }
+            50% {
+                transform: translateY(-10px); /* ลอยขึ้น 10px */
+            }
+            100% {
+                transform: translateY(0); /* กลับมาที่ตำแหน่งเดิม */
+            }
+        }
+        a {
+            background: linear-gradient(135deg, #1fa9d3 0%, #29b6f6 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 8px 25px rgba(31, 169, 211, 0.4), 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-family: 'Kanit', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        a::before {
+            content: '←';
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        a::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        a:hover::after {
+            left: 100%;
+        }
+
+        a:hover {
+            background: linear-gradient(135deg, #29b6f6 0%, #1fa9d3 100%);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(31, 169, 211, 0.5), 0 8px 15px rgba(0,0,0,0.15);
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(1, 139, 146, 0.9);/* แดงเลือดหมู */
+            border-radius: 20px;
+        }
+        .description-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(128, 0, 0, 0.7); /* แดงเลือดหมู */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>วัดปากนอกทะเล</h1>
+        <h2>Wat Pak Nok Thale</h2> <!-- ชื่อภาษาอังกฤษ -->
+    </header>
+
+    <main>
+        <div class="image-container">
+            <img src="\images\9.jpg" alt="วัดปากนอกทะเล" style="max-width: 100%; border-radius: 10px;">
+        </div>
+        <div class="description-box">
+            <p>วัดแห่งนี้ตั้งอยู่ท่ามกลางธรรมชาติที่สวยงามของนาเกลือ มีสถาปัตยกรรมที่โดดเด่นและเป็นเอกลักษณ์ โดยเฉพาะวิหาร "เรือเภตรานิพพานัง" ที่สร้างเป็นรูปเรือสำเภาขนาดใหญ่และงดงาม ซึ่งเปรียบเสมือนพาหนะนำพาพุทธศาสนิกชนไปสู่นิพพาน</p>
+            <p>นอกจากการทำบุญแล้ว นักท่องเที่ยวยังสามารถขึ้นไปบนวิหารเพื่อชมวิวทิวทัศน์ของอำเภอบ้านแหลมและพื้นที่โดยรอบได้อีกด้วย.</p>
+            <p>นอกจากนี้ยังมีร้านอาหารและร้านขายของที่ระลึกในบริเวณใกล้เคียง ทำให้นักท่องเที่ยวสามารถเพลิดเพลินกับการช้อปปิ้งและลิ้มรสอาหารท้องถิ่นได้อย่างเต็มที่.</p>
+            <p><strong>ที่ตั้ง:</strong>  ตำบลปากทะเล อำเภอบ้านแหลม จังหวัดเพชรบุรี</p>
+            <p><strong>เวลาเปิด-ปิด:</strong> 08.00-18.00 น.</p>
+            <p><strong>ค่าบริการ:</strong> ฟรี</p>
+        </div>
+        <model-viewer src="\model\Terrific Curcan.glb" alt="วัดปากนอกทะเล 3D" auto-rotate camera-controls scale="1.5 1.5 1.5"></model-viewer>
+        <a href="getStarted.html">กลับไปที่หน้าหลัก</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 แนะนำสถานที่ท่องเที่ยวในจังหวัดเพชรบุรี</p>
+    </footer>
+</body>
+</html>

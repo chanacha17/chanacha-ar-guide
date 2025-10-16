@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Bangkok the city of tourism</title>
+    <title>Welcome to Phetchaburi</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MindAR-js/aframe/dist/aframe-mindar.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; 
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
@@ -32,58 +32,76 @@
 
         /* Style for the Get Started button and dropdown menu */
         #getStartedButton {
-            background-color: #4CAF50; 
-            color: white;
-            padding: 10px 20px;
+            background: linear-gradient(90deg, #1fa9d3 0%, #ffe066 100%);
+            color: #fff;
+            padding: 12px 32px;
             border: none;
-            border-radius: 25px; 
+            border-radius: 32px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.15em;
             margin-top: 20px;
-            position: relative; 
-            transition: background-color 0.3s; 
+            position: relative;
+            box-shadow: 0 8px 32px rgba(30,30,30,0.18);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.22);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s, color 0.2s, transform 0.2s;
         }
 
         #getStartedButton:hover {
-            background-color: #45a049; 
+            background: linear-gradient(90deg, #ffe066 0%, #1fa9d3 100%);
+            color: #0077a3;
+            transform: scale(1.09);
         }
 
         #dropdownMenu {
-            display: none; 
+            display: none;
             position: absolute;
-            top: 100%; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 25px; 
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1; 
-            transition: opacity 0.3s, transform 0.3s; 
-            opacity: 0; 
-            transform: translateX(-50%) translateY(-10px); 
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f8f8f8 0%, #e0f7fa 100%);
+            border: none;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(30, 30, 30, 0.13);
+            z-index: 10;
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0;
+            transform: translateX(-50%) translateY(-10px);
+            padding: 24px 0 24px 0;
+            min-width: 320px;
+            max-width: 95vw;
         }
 
         #dropdownMenu.show {
-            display: block; 
-            opacity: 1; 
-            transform: translateX(-50%) translateY(0); 
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         #dropdownMenu button {
-            background-color: white;
-            color: #333;
+            background: none;
+            color: #1fa9d3;
             border: none;
-            padding: 10px;
+            padding: 12px 32px 12px 20px;
             width: 100%;
             text-align: left;
             cursor: pointer;
-            border-radius: 25px; 
-            transition: background-color 0.3s; 
+            border-radius: 16px;
+            font-size: 1.13em;
+            font-family: inherit;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
 
         #dropdownMenu button:hover {
-            background-color: #f0f0f0; 
+            background: linear-gradient(90deg, #1fa9d3 0%, #7a0707 100%);
+            color: #fff;
+            transform: scale(1.04);
         }
 
         /* Style for header */
@@ -91,7 +109,7 @@
             position: relative; 
             text-align: center;
             padding: 20px;
-            background-color: #7a0707; 
+            background: url('images/Phetchaburi.png') center/cover no-repeat;
             border-bottom: 4px solid rgb(18, 15, 15);
         }
 
@@ -132,9 +150,9 @@
         /* Style for footer */
         footer {
             text-align: center;
-            padding: 10px;
-            background-color: #74030f;
-            color: black;
+            padding: 5px;
+            background-color:rgba(1, 139, 146, 0.9);
+            color: #fff;
         }
 
         /* Style for submenu */
@@ -150,13 +168,13 @@
 
         img {
             width: 100%;
-            height: 150px; /* Desired height */
+            height: 150px; /* Desired height */ 
             object-fit: contain; /* Preserve aspect ratio */
             border-radius: 10px 10px 0 0; /* Rounded corners */
         }
 
         /* Style for scanner */
-        #scannerContainer {
+        #scannerContainer { 
             display: none;
             text-align: center;
             margin-top: 20px;
@@ -181,144 +199,186 @@
         }
         /* Style for map image */
     #mapImage {
-    width: 100%; /* Make map image responsive */
-    height: auto; /* Set desired height */
-    object-fit: contain; /* Preserve aspect ratio */
-    margin: 10px ; /* Center the image */
-    display: block; /* Ensure it's a block element */
-}
-  
+        width: 90%; /* Make map image responsive */
+        max-width: 600px; /* Limit max size on desktop */
+        height: auto; /* Keep aspect ratio */
+        object-fit: contain; /* Preserve aspect ratio */
+        margin: 22px auto; /* Center the image horizontally */
+        display: block; /* Ensure it's a block element */
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12); /* Soft shadow for style */
+        border-radius: 12px; /* Rounded corners */
+        transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s;
+        cursor: zoom-in;
+    }
+    #mapImage:hover {
+        transform: scale(1.13);
+        box-shadow: 0 8px 32px rgba(30,180,200,0.18);
+    }
+
+    @media (max-width: 600px) {
+        #mapImage {
+            width: 98%;
+            max-width: 98vw;
+            margin: 12px auto;
+        }
+    }
+    /* Style for the Places Popup (Important: must be fixed for full screen overlay) */
+    #placesPopup {
+        display:none; 
+        position:fixed; /* Fix the position relative to the viewport */
+        top:0; 
+        left:0; 
+        width:100vw; 
+        height:100vh; 
+        background:rgba(0,0,0,0.4); /* Darker overlay */
+        z-index:9999;
+        overflow-y: auto; /* Allow scrolling for mobile */
+    }
 
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Bangkok the city of tourism</h1>
-        <p>ยินดีต้อนรับสู่กรุงเทพมหานคร เมืองแห่งการท่องเที่ยว</p>
-        <button id="getStartedButton">Get Started ▼</button>
-        <div id="dropdownMenu">
-            <button id="scannerButton">Scanner</button>
-            <button id="infoCenterButton">Info Center</button>
-            <button id="aboutButton">About</button> <!-- Sun emoji -->
-            <div id="infoSubmenu" class="submenu">
-                <button onclick="navigateTo('planetarium.html')">Planetarium</button>
-                <button onclick="navigateTo('museumSiam.html')">Museum Siam</button>
-                <button onclick="navigateTo('benjakittiPark.html')">Benjakitti Park</button>
-                <button onclick="navigateTo('giantSwing.html')">giantSwing</button>
-                <button onclick="navigateTo('goldenMount.html')">Phu khao thong</button>
-                <button onclick="navigateTo('sanamLuang.html')">Sanam Luang</button>
-                <button onclick="navigateTo('bacc.html')">Bangkok Art and Culture Centre</button>
-                <button onclick="navigateTo('watPhraKaew.html')">Wat Phra Kaew</button>
-                <button onclick="navigateTo('rama8Bridge.html')">Phra Phutthayotfa</button>
-                <button onclick="navigateTo('thaMaharaj.html')">Tha Maharaj</button>
-            </div>
-        </div>
-    </header>
+    <div style="max-width:700px; margin:0 auto; background:rgba(129, 127, 127, 0.32); border-radius:18px; padding:32px 24px 24px 24px; box-shadow:0 4px 24px rgba(30,30,30,0.13); position:relative; z-index:1;">
+        <h1 style="font-family:'Playfair Display',serif; font-size:3em; color:#fff; text-shadow:0 2px 16px rgba(30,180,200,0.22); margin-bottom:0.2em; position:relative;">Welcome to Phetchaburi
+            <span style="display:block; width:120px; height:6px; margin:0.3em auto 0 auto; background:linear-gradient(90deg,#1fa9d3 0%,#ffe066 100%); border-radius:3px;"></span>
+        </h1>
+        <p style="color:#fff; font-size:1.18em; text-shadow:0 2px 8px rgba(0,0,0,0.22); margin-bottom:28px;">ยินดีต้อนรับสู่จังหวัดเพชรบุรี เมืองแห่งการท่องเที่ยว</p>
+    </div>
+    <button id="getStartedButton">
+        <span style="display:inline-block; vertical-align:middle; margin-right:8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#fff" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));"><path d="M2.5 19.5l19-7.5-19-7.5v6l15 1.5-15 1.5z"/></svg>
+        </span>
+        <span style="vertical-align:middle;">Get Started</span>
+    </button>
+    <div id="dropdownMenu">
+        <button id="placesMainButton" type="button"><span style="font-size:1.35em;">📌</span> <span class="place-title-text">Place of Interest</span></button>
+        <button id="mapsButton" type="button"><span style="font-size:1.35em;">🗺️</span> Maps</button>
+        <button id="scannerButton" type="button"><span style="font-size:1.35em;">🔍</span> Scanner</button>
+        <button id="foodHotelButton" type="button" onclick="window.location.href='food-hotel.html'"><span style="font-size:1.35em;">🍽️</span><span style="font-size:1.35em;">🏨</span> Food & Hotel</button>
+        <button id="aboutButton" type="button"><span style="font-size:1.35em; color:#6c63ff;">👤</span> About</button>
+    </div>
+    <div id="placesPopup">
+      <div style="max-width:420px; margin:60px auto 0 auto; background:#fff; border-radius:18px; box-shadow:0 4px 24px #1fa9d344; padding:32px 24px 24px 24px; position:relative;">
+        <button id="closePlacesPopup" style="position:absolute; left:16px; top:16px; background:none; border:none; font-size:1.6em; color:#1fa9d3; cursor:pointer;">←</button>
+        <h2 style="color:#1fa9d3; text-align:center; margin-bottom:18px;">สถานที่ท่องเที่ยว</h2>
+        <ul style="padding-left:0; margin-bottom:0; list-style:none;">
+          <li><a href="Cha-am Beach.html" style="display:flex;align-items:center;gap:12px;padding:10px 0 10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P1</span> Cha-am Beach</a></li>
+          <li><a href="Tham-Chaeng-Temple.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P2</span> Tham Chaeng Temple</a></li>
+          <li><a href="The-Chang-Hua-Man-Royal-Project.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P3</span> The Chang Hua Man Royal Project</a></li>
+          <li><a href="Khao-Bandai-It-Temple.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P4</span> Khao Bandai It Temple</a></li>
+          <li><a href="Phra-Nakhon-Khiri-Historical-Park.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P5</span> Phra Nakhon Khiri Historical Park</a></li>
+          <li><a href="Khoi-Temple.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P6</span> Khoi Temple</a></li>
+          <li><a href="Phra-Ram-Ratchaniwet.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P7</span> Phra Ram Ratchaniwet</a></li>
+          <li><a href="Wat-Mahathat-Worawihan.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P8</span> Wat Mahathat Worawihan</a></li>
+          <li><a href="Wat-Pak-Nok-Thale.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P9</span> Wat Pak Nok Thale</a></li>
+          <li><a href="Khao-Yoi-Cave-Temple.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P10</span> Khao Yoi Cave Temple</a></li>
+        </ul>
+      </div>
+    </div>
+</header>
 
-    <!-- AR container section -->
     <div id="ar-container">
         <a-scene embedded mindar="imageTargetSrc: markers/targets1.mind">
-            <!-- Make sure to set the correct path to your .mind file -->
-            <!-- Show models for each marker -->
-            <a-marker targetIndex="0"> <!-- Marker 1 -->
-                <a-entity gltf-model="model/bkk-planetarium.glb" scale="0.5 0.5 0.5"></a-entity>
+            <a-marker targetIndex="0"> <a-entity gltf-model="model\Cha-am.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <a-marker targetIndex="1"> <!-- Marker 2 -->
-                <a-entity gltf-model="model/BACC.glb" scale="0.5 0.5 0.5"></a-entity>
+            <a-marker targetIndex="1"> <a-entity gltf-model="model\Tham-Chaeng.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <a-marker targetIndex="2"> <!-- Marker 3 -->
-                <a-entity gltf-model="model/Phukaothong.glb" scale="0.5 0.5 0.5"></a-entity>
+            <a-marker targetIndex="2"> <a-entity gltf-model="model\Chang-Hua-Man.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <a-marker targetIndex="3"> <!-- Marker 4 -->
-                <a-entity gltf-model="model/Mue.glb" scale="0.5 0.5 0.5"></a-entity>
+            <a-marker targetIndex="3"> <a-entity gltf-model="model\Khao-Bandai-It.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <a-marker targetIndex="4"> <!-- Marker 5 -->
-                <a-entity gltf-model="model/Sao.glb" scale="0.5 0.5 0.5"></a-entity>
+            <a-marker targetIndex="4"> <a-entity gltf-model="model\Phra-Nakhon-Khiri.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <!-- Add additional markers and models as needed -->
             <a-entity camera></a-entity>
         </a-scene>
     </div>
 
     <main>
         <div class="grid-container">
-            <section id="planetarium">
-                <h2><a href="planetarium.html">planetarium</a></h2>
-                <img src="images/A1.1.png" alt="planetarium">
-                <p>สถานที่เรียนรู้ดาราศาสตร์ที่น่าสนใจ</p>
+            <section id="Cha-am Beach" onclick="navigateTo('Cha-am Beach.html')" style="cursor:pointer; opacity:1;">
+                <h2>Cha-am Beach</h2>
+                <img src="images/P1.png" alt="Cha-am Beach">
+                <p>ทะเลใกล้กรุงเทพฯ ที่ไปง่าย ได้ทั้งความสนุกและพักผ่อน</p>
+    
             </section>
-            <section id="museumSiam">
-                <h2><a href="museumSiam.html">Museum Siam</a></h2>
-                <img src="images/A1.2.png" alt="Museum Siam">
-                <p>พิพิธภัณฑ์ที่นำเสนอเรื่องราวของชาติไทย</p>
+            <section id="Tham Chaeng Temple" onclick="navigateTo('Tham-Chaeng-Temple.html')" style="cursor:pointer; opacity:1;">
+                <h2>Tham Chaeng Temple</h2>
+                <img src="images/P2.png" alt="Tham Chaeng Temple">
+                <p>องค์พญานาคที่ใหญ่ที่สุดในประเทศไทย!</p>
             </section>
-            <section id="benjakittiPark">
-                <h2><a href="benjakittiPark.html">Benchakitti Forest Park</a></h2>
-                <img src="images/A3.jpg" alt="Benchakitti Forest Park">
-                <p>สวนสาธารณะขนาดใหญ่สำหรับการพักผ่อนและออกกำลังกาย</p>
+            <section id="The Chang Hua Man Royal Project" onclick="navigateTo('The-Chang-Hua-Man-Royal-Project.html')" style="cursor:pointer; opacity:1;">
+                <h2>The Chang Hua Man Royal Project</h2>
+                <img src="images/P3.png" alt="The Chang Hua Man Royal Project">
+                <p>แหล่งเรียนรู้การเกษตรตามหลักเศรษฐกิจพอเพียง</p>
             </section>
-            <section id="giantSwing">
-                <h2><a href="giantSwing.html">Sao Ching Cha</a></h2>
-                <img src="images/A4.jpg" alt="Sao Ching Cha">
-                <p>โบราณสถานสำคัญที่ตั้งอยู่ใจกลางกรุงเทพ</p>
+            <section id="Khao Bandai It Temple" onclick="navigateTo('Khao-Bandai-It-Temple.html')" style="cursor:pointer; opacity:1;">
+                <h2>Khao Bandai It Temple</h2>
+                <img src="images/P4.png" alt="Khao Bandai It Temple">
+                <p>ย้อนเวลาสู่ยุคทองแห่งประวัติศาสตร์ที่เมืองเพชรบุรี</p>
             </section>
-            <section id="goldenMount">
-                <h2><a href="goldenMount.html">Phu khao thong</a></h2>
-                <img src="images/A5.jpg" alt="Phu khao thong">
-                <p>วัดที่มีบรรยากาศสงบและวิวทิวทัศน์ที่สวยงาม</p>
+            <section id="Phra Nakhon Khiri Historical Park" onclick="navigateTo('Phra-Nakhon-Khiri-Historical-Park.html')" style="cursor:pointer; opacity:1;">
+                <h2>Phra Nakhon Khiri Historical Park</h2>
+                <img src="images/P5.png" alt="Phra Nakhon Khiri Historical Park">
+                <p>ยอดเขากลางเป็นที่ตั้งของพระธาตุจอมเพชร</p>
             </section>
-            <section id="sanamLuang">
-                <h2><a href="sanamLuang.html">Sanam Luang</a></h2>
-                <img src="images/A6.jpg" alt="Sanam Luang">
-                <p>สถานที่สำคัญของไทยในด้านประวัติศาสตร์และวัฒนธรรม</p>
+            <section id="Khoi Temple" onclick="navigateTo('Khoi-Temple.html')" style="cursor:pointer; opacity:1;">
+                <h2>Khoi Temple</h2>
+                <img src="images/P6.png" alt="Khoi Temple">
+                <p>สัมผัสงานปูนปั้นชั้นครูที่หาชมได้ยากที่พระธาตุฉิมพลีฯ</p>
             </section>
-            <section id="bacc">
-                <h2><a href="bacc.html">Bangkok Art and Culture Centre</a></h2>
-                <img src="images/A1.7.png" alt=" Bangkok Art and Culture Centre">
-                <p>ศูนย์กลางศิลปะร่วมสมัยที่น่าสนใจ</p>
+            <section id="Phra Ram Ratchaniwet" onclick="navigateTo('Phra-Ram-Ratchaniwet.html')" style="cursor:pointer; opacity:1;">
+                <h2>Phra Ram Ratchaniwet</h2>
+                <img src="images/P7.png" alt="Phra Ram Ratchานิเวศน์">
+                <p>"สัมผัสชีวิตราชวงศ์แบบใกล้ชิดในพิพิธภัณฑ์มีชีวิต"</p>
             </section>
-            <section id="watPhraKaew">
-                <h2><a href="watPhraKaew.html">Wat Phra Kaew</a></h2>
-                <img src="images/A8.jpg" alt="วัดพระแก้ว">
-                <p>วัดที่สำคัญที่สุดของไทย</p>
+            <section id="Wat Mahathat Worawihan" onclick="navigateTo('Wat-Mahathat-Worawihan.html')" style="cursor:pointer; opacity:1;">
+                <h2>Wat Mahathat Worawihan</h2>
+                <img src="images/P8.png" alt="Wat Mahathat Worawihan">
+                <p>ยอดพระปรางค์ 5 ยอด ที่ภายในบรรจุพระบรมสารีริกธาตุ</p>
             </section>
-            <section id="rama8Bridge">
-                <h2><a href="rama8Bridge.html">Phra Phutthayotfa</a></h2>
-                <img src="images/A9.jpg" alt="Phra Phutthayotfa">
-                <p>สะพานที่สวยงามและมีวิวที่น่าประทับใจ</p>
+            <section id="Wat Pak Nok Thale" onclick="navigateTo('Wat-Pak-Nok-Thale.html')" style="cursor:pointer; opacity:1;">
+                <h2>Wat Pak Nok Thale</h2>
+                <img src="images/P9.png" alt="Wat Pak Nok Thale">
+                <p>เสริมโชคลาภที่ วัดนอกปากทะเล วัดริมทะเลที่สงบสุด ๆ</p>
             </section>
-            <section id="thaMaharaj">
-                <h2><a href="thaMaharaj.html">Tha Maharaj</a></h2>
-                <img src="images/A10.jpg" alt="Tha Maharaj">
-                <p>สถานที่นั่งเรือและท่องเที่ยว</p>
+            <section id="Khao Yoi Cave Temple " onclick="navigateTo('Khao-Yoi-Cave-Temple.html')" style="cursor:pointer; opacity:1;">
+                <h2>Khao Yoi Cave Temple</h2>
+                <img src="images/P10.png" style="width: 150px; height:auto; display: block; margin: 0 auto;" alt="Khao Yoi Cave Temple">
+                <p>ที่นี่เป็นวัดที่ซ่อนตัวอยู่ภายในถ้ำบนภูเขาหินปูน ภายในถ้ำมีบรรยากาศขลังและเป็นที่ประดิษฐาน พระพุทธไสยาสน์ และ รอยพระพุทธบาทจำลอง ที่สวยงาม</p>
             </section>
         </div>
 
         <div id="scannerContainer">
-            <video id="video" width="640" height="480" autoplay></video>
+            <video id="video" width="640" height="480" autoplay></video> 
             <button id="stopScannerButton">หยุดสแกน</button>
         </div>
-         <!-- Add map image here -->
-         <img id="mapImage" src="images/Map.png" alt="แผนที่กรุงเทพมหานคร">
-        
+          <img id="mapImage" src="images/map.png" alt="แผนที่จังหวัดเพชรบุรี">
 
     </main>
 
     <footer>
-        <p>© 2024 Bangkok Tourism. All rights reserved.</p>
+        <p>© 2025 Phetchaburi Tourism. All rights reserved.</p>
     </footer>
 
-    <script>
+    <script> 
         const getStartedButton = document.getElementById("getStartedButton");
         const dropdownMenu = document.getElementById("dropdownMenu");
-        const infoCenterButton = document.getElementById("infoCenterButton");
-        const infoSubmenu = document.getElementById("infoSubmenu");
         const sections = document.querySelectorAll("section");
-        const scannerButton = document.getElementById("scannerButton");
-        const scannerContainer = document.getElementById("scannerContainer");
-        const arContainer = document.getElementById("ar-container"); // Reference to AR container
-        const video = document.getElementById("video");
-        const stopScannerButton = document.getElementById("stopScannerButton");
+        const placesMainButton = document.getElementById('placesMainButton');
+        const placesPopup = document.getElementById('placesPopup');
+        const closePlacesPopup = document.getElementById('closePlacesPopup');
+        const mapsButton = document.getElementById('mapsButton');
+        const foodHotelButton = document.getElementById('foodHotelButton');
+        const aboutButton = document.getElementById('aboutButton');
+        const scannerButton = document.getElementById('scannerButton');
+        // Event listener for Scanner button
+        if (scannerButton) {
+            scannerButton.addEventListener("click", () => {
+                dropdownMenu.classList.remove("show");
+                window.location.href = 'scanner.html';
+            });
+        }
 
         // Event listener for Get Started button
         getStartedButton.addEventListener("click", () => {
@@ -329,48 +389,65 @@
             navigateTo('about.html'); // Redirect to about page
         });
 
-        // Event listener for Info Center button
-        infoCenterButton.addEventListener("click", () => {
-            infoSubmenu.classList.toggle("show");
-        });
-
-        // Event listener for Scanner button
-          // Event listener for Scanner button
-    scannerButton.addEventListener("click", () => {
-        dropdownMenu.classList.remove("show"); // ลบเมนูดรอปดาวน์
-        navigateTo('scanner.html'); // เปลี่ยนไปที่ scanner.html
-    });
-
-        // Event listener for Stop Scanner button
-        stopScannerButton.addEventListener("click", () => {
-            scannerContainer.style.display = "none"; // Hide scanner
-            stopScanner(); // Stop scanning
-            arContainer.style.display = "none"; // Hide AR container
+        // Event listener for main "สถานที่ท่องเที่ยว" button
+        // Show popup and hide other menu buttons
+        placesMainButton.onclick = function() {
+            if (placesPopup) {
+                placesPopup.style.display = 'block';
+                mapsButton.style.display = 'none'; // ซ่อน Maps
+                scannerButton.style.display = 'none'; // ซ่อน Scanner
+                foodHotelButton.style.display = 'none'; // ซ่อน Food & Hotel
+                aboutButton.style.display = 'none'; // ซ่อน About
+                dropdownMenu.classList.remove('show');
+            }
+        };
+        
+        if (closePlacesPopup) {
+            closePlacesPopup.onclick = function() {
+                placesPopup.style.display = 'none';
+                // นำปุ่มอื่นๆ กลับมาแสดง
+                mapsButton.style.display = 'flex'; // เปลี่ยนจาก '' เป็น 'flex' เพื่อให้แสดงผลถูกต้องตาม style
+                scannerButton.style.display = 'flex';
+                foodHotelButton.style.display = 'flex';
+                aboutButton.style.display = 'flex';
+            };
+        }
+        
+        // Event listener for Maps button
+        mapsButton.addEventListener("click", () => {
+            dropdownMenu.classList.remove("show");
+            window.open('map.html', '_blank');
         });
         
+        // Event listener for Food/Hotel button: go to page
+        foodHotelButton.addEventListener("click", () => {
+            dropdownMenu.classList.remove("show");
+            window.location.href = 'food-hotel.html';
+        });
+        
+        // Search Bar functionality: filter and scroll to section
+        document.getElementById('mainSearchBar').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const val = e.target.value.trim().toLowerCase();
+                if (!val) return;
+                const allSections = document.querySelectorAll('section');
+                let found = false;
+                allSections.forEach(sec => {
+                    const title = sec.querySelector('h2')?.textContent?.toLowerCase() || '';
+                    if (title.includes(val)) {
+                        sec.scrollIntoView({behavior:'smooth', block:'center'});
+                        sec.style.background = '#fffbe6';
+                        setTimeout(()=>sec.style.background='', 1500);
+                        found = true;
+                    }
+                });
+                if (!found) alert('ไม่พบสถานที่ที่ค้นหา');
+            }
+        });
 
         // Navigation function
         function navigateTo(page) {
             window.location.href = page;
-        }
-
-        // Start scanner function
-        function startScanner() {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(stream => {
-                    video.srcObject = stream;
-                    video.play();
-                })
-                .catch(error => {
-                    console.error("Error accessing the camera:", error);
-                });
-        }
-
-        // Stop scanner function
-        function stopScanner() {
-            const tracks = video.srcObject.getTracks();
-            tracks.forEach(track => track.stop());
-            video.srcObject = null;
         }
 
         // Show cards on page load
@@ -378,8 +455,12 @@
             sections.forEach(section => {
                 section.classList.add("show");
             });
+            // ซ่อน mapImage เมื่อโหลดหน้า (ถ้าไม่ได้อยู่บนหน้า map.html)
+            const mapImage = document.getElementById('mapImage');
+            if (mapImage) {
+                 mapImage.style.display = 'none'; // ซ่อนแผนที่บนหน้าหลัก
+            }
         };
     </script>
 </body>
 </html>
-  

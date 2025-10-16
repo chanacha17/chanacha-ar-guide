@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ที่พักและร้านอาหารในเพชรบุรี</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 25%, #81d4fa 50%, #4fc3f7 75%, #29b6f6 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .main-container {
+      width: 100%;
+      padding: 0;
+      position: relative;
+    }
+    
+    /* Floating particles background */
+    .background-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+    
+    .particle:nth-child(1) { width: 20px; height: 20px; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 30px; height: 30px; left: 20%; animation-delay: 2s; }
+    .particle:nth-child(3) { width: 25px; height: 25px; left: 30%; animation-delay: 4s; }
+    .particle:nth-child(4) { width: 35px; height: 35px; left: 40%; animation-delay: 6s; }
+    .particle:nth-child(5) { width: 15px; height: 15px; left: 50%; animation-delay: 8s; }
+    .particle:nth-child(6) { width: 40px; height: 40px; left: 60%; animation-delay: 10s; }
+    .particle:nth-child(7) { width: 20px; height: 20px; left: 70%; animation-delay: 12s; }
+    .particle:nth-child(8) { width: 25px; height: 25px; left: 80%; animation-delay: 14s; }
+    .particle:nth-child(9) { width: 30px; height: 30px; left: 90%; animation-delay: 16s; }
+    
+    @keyframes float {
+      0% { 
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { 
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Hero Header */
+    .hero-header {
+      background: linear-gradient(135deg, rgba(31, 169, 211, 0.9) 0%, rgba(0, 119, 163, 0.9) 50%, rgba(41, 182, 246, 0.9) 100%);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 60px rgba(31, 169, 211, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+      margin-bottom: 0;
+      padding: 80px 40px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+    
+    .hero-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('images/Phetchaburi.png') center/cover;
+      opacity: 0.15;
+      z-index: 1;
+      filter: blur(2px);
+    }
+    
+    .hero-header::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+      z-index: 2;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 3;
+    }
+    
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5em;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 50px rgba(255,255,255,0.3);
+      background: linear-gradient(45deg, #fff, #f0f8ff, #fff, #e6f3ff);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textShine 4s ease-in-out infinite;
+    }
+    
+    @keyframes textShine {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .hero-subtitle {
+      font-size: 1.4em;
+      font-weight: 300;
+      opacity: 0.95;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 0.95;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 1s both;
+    }
+    
+    .hero-icon {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 25px 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s;
+    }
+    
+    .hero-icon:hover::before {
+      left: 100%;
+    }
+    
+    .hero-icon:hover {
+      transform: translateY(-8px) scale(1.05);
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.4);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+    
+    .hero-icon span {
+      font-size: 3em;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+      60% { transform: translateY(-4px); }
+    }
+    
+    .hero-icon-text {
+      font-size: 1.2em;
+      font-weight: 600;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    /* Content Container */
+    .content-container {
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      padding: 60px 40px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .content-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(31, 169, 211, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(41, 182, 246, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 40% 80%, rgba(79, 195, 247, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2em;
+      background: linear-gradient(135deg, #1fa9d3 0%, #0077a3 50%, #29b6f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+      text-shadow: 0 0 30px rgba(31, 169, 211, 0.3);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, #1fa9d3, #29b6f6, #4fc3f7);
+      border-radius: 3px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      from { box-shadow: 0 0 10px rgba(31, 169, 211, 0.5); }
+      to { box-shadow: 0 0 20px rgba(41, 182, 246, 0.8); }
+    }
+    
+    .section-subtitle {
+      font-size: 1.3em;
+      color: #6b7280;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+    
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 40px;
+      margin-bottom: 80px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
+    }
+    
+    .card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%);
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1), 0 8px 25px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba(255,255,255,0.3);
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(31, 169, 211, 0.03) 0%, rgba(41, 182, 246, 0.03) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .card:hover::before {
+      opacity: 1;
+    }
+    
+    .card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 30px 80px rgba(31, 169, 211, 0.2), 0 15px 40px rgba(41, 182, 246, 0.15);
+      border-color: rgba(31, 169, 211, 0.3);
+    }
+    
+    .card-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      position: relative;
+    }
+    
+    .card:hover .card-image {
+      transform: scale(1.1);
+    }
+    
+    .card-content {
+      padding: 35px 30px;
+      position: relative;
+    }
+    
+    .card-title {
+      font-size: 1.6em;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1fa9d3 0%, #0077a3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .card-title span {
+      background: linear-gradient(135deg, #29b6f6 0%, #4fc3f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.2em;
+      filter: drop-shadow(0 0 5px rgba(41, 182, 246, 0.3));
+    }
+    
+    .card-description {
+      color: #4b5563;
+      font-size: 1.1em;
+      line-height: 1.7;
+      margin-bottom: 25px;
+      font-weight: 400;
+    }
+    
+    .card-features {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .card-features li {
+      color: #6b7280;
+      font-size: 1em;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .card-features li:last-child {
+      border-bottom: none;
+    }
+    
+    .card-features li:hover {
+      color: #1fa9d3;
+      transform: translateX(5px);
+    }
+    
+    .card-features li::before {
+      content: '✨';
+      font-size: 1.1em;
+      animation: sparkle 2s infinite;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.2) rotate(180deg); }
+    }
+    
+    /* Back Button */
+    .back-button-container {
+      text-align: center;
+      margin-top: 60px;
+      position: relative;
+    }
+    
+    .back-btn {
+      background: linear-gradient(135deg, #1fa9d3 0%, #0077a3 50%, #29b6f6 100%);
+      background-size: 200% 200%;
+      animation: gradientMove 3s ease infinite;
+      color: white;
+      border: none;
+      border-radius: 60px;
+      padding: 20px 60px;
+      font-size: 1.3em;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 15px 40px rgba(31, 169, 211, 0.4), 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: 'Kanit', sans-serif;
+      letter-spacing: 0.5px;
+      text-transform: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .back-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+    }
+    
+    .back-btn:hover::before {
+      left: 100%;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 25px 60px rgba(31, 169, 211, 0.5), 0 10px 25px rgba(41, 182, 246, 0.3);
+      border-color: rgba(255,255,255,0.5);
+    }
+    
+    .back-btn:active {
+      transform: translateY(-6px) scale(1.02);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 0;
+      }
+      
+      .hero-header {
+        padding: 60px 25px;
+      }
+      
+      .hero-title {
+        font-size: 3em;
+      }
+      
+      .content-container {
+        padding: 40px 25px;
+      }
+      
+      .section-title {
+        font-size: 2.5em;
+      }
+      
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+      }
+      
+      .hero-icons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .card {
+        border-radius: 25px;
+      }
+      
+      .back-btn {
+        padding: 18px 45px;
+        font-size: 1.2em;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.5em;
+      }
+      
+      .section-title {
+        font-size: 2.2em;
+      }
+      
+      .cards-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+      }
+      
+      .card-content {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Particles -->
+  <div class="background-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="main-container">
+    <!-- Hero Header -->
+    <div class="hero-header">
+      <div class="hero-content">
+        <h1 class="hero-title">ที่พักและร้านอาหาร</h1>
+        <p class="hero-subtitle">สัมผัสประสบการณ์ที่พักและรสชาติอาหารดีเยี่ยมในเพชรบุรี</p>
+        <div class="hero-icons">
+          <div class="hero-icon">
+            <span>�</span>
+            <div class="hero-icon-text">ที่พักคุณภาพ</div>
+          </div>
+          <div class="hero-icon">
+            <span>🍽️</span>
+            <div class="hero-icon-text">อาหารพื้นเมือง</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-container">
+      <!-- Accommodation Section -->
+      <div class="section-header">
+        <h2 class="section-title">🛏️ ที่พักแนะนำ</h2>
+        <p class="section-subtitle">ที่พักคุณภาพในใจกลางเมืองเพชรบุรี</p>
+      </div>
+      
+      <div class="cards-grid">
+        <div class="card">
+          <img src="images/hotel1.jpg" alt="โรงแรม A บ้านเอ๋โฮมเทล" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">
+              <span>🏨</span>
+              โรงแรม A บ้านเอ๋โฮมเทล
+            </h3>
+            <p class="card-description">ที่พักใจกลางเมืองเพชรบุรี เดินทางสะดวก สะอาด ปลอดภัย บรรยากาศอบอุ่น</p>
+            <ul class="card-features">
+              <li>Wi-Fi ทุกห้อง (ฟรี)</li>
+              <li>อาหารเช้า (ฟรี)</li>
+              <li>บริการทำความสะอาดรายวัน</li>
+              <li>เครื่องปรับอากาศ</li>
+              <li>ที่จอดรถ</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/h2.webp" alt="โรงแรม B เอเชียชะอำ" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">
+              <span>🏝️</span>
+              โรงแรม B เอเชียชะอำ
+            </h3>
+            <p class="card-description">บรรยากาศธรรมชาติ ใกล้ชายหาด เหมาะกับการพักผ่อน วิวทะเลสวยงาม</p>
+            <ul class="card-features">
+              <li>สระว่ายน้ำกลางแจ้ง</li>
+              <li>กิจกรรมทางน้ำ</li>
+              <li>บริการนวดและสปา</li>
+              <li>ร้านอาหารในรีสอร์ท</li>
+              <li>วิวทะเล</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant Section -->
+      <div class="section-header">
+        <h2 class="section-title">🍽️ ร้านอาหารแนะนำ</h2>
+        <p class="section-subtitle">ลิ้มรสอาหารพื้นเมืองและซีฟู้ดสดใหม่</p>
+      </div>
+      
+      <div class="cards-grid">
+        <div class="card">
+          <img src="images/food1.jpg" alt="ร้านอาหาร เปลญวน" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">
+              <span>🍜</span>
+              ร้านอาหาร เปลญวน
+            </h3>
+            <p class="card-description">อาหารพื้นเมืองรสเด็ด บรรยากาศเป็นกันเอง ราคาไม่แพง</p>
+            <ul class="card-features">
+              <li>ที่จอดรถ (มีที่จอดรถ)</li>
+              <li>Wi-Fi บริการฟรี</li>
+              <li>สัตว์เลี้ยงเข้าได้</li>
+              <li>ไม่รับบัตรเครดิต</li>
+              <li>บริการเดลิเวอรี</li>
+              <li>เหมาะสำหรับเด็กๆ</li>
+              <li>เหมาะสำหรับมาเป็นกลุ่ม</li>
+              <li>เปิด จันทร์-อังคาร, พฤหัสบดี-เสาร์ 10:30-20:00</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/h4.jpg" alt="ครัวเม็ดทราย ชายหาดชะอำ" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">
+              <span>🦐</span>
+              ครัวเม็ดทราย ชายหาดชะอำ
+            </h3>
+            <p class="card-description">ซีฟู้ดสดใหม่ ริมทะเล บรรยากาศดี วิวสวย อาหารอร่อย</p>
+            <ul class="card-features">
+              <li>ที่จอดรถ (มีที่จอดรถ)</li>
+              <li>Wi-Fi บริการฟรี</li>
+              <li>สัตว์เลี้ยงเข้าได้</li>
+              <li>รับบัตรเครดิต</li>
+              <li>บริการเดลิเวอรี</li>
+              <li>เหมาะสำหรับเด็กๆ</li>
+              <li>เหมาะสำหรับมาเป็นกลุ่ม</li>
+              <li>เปิดทุกวัน 10:00-21:00</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back Button -->
+      <div class="back-button-container">
+        <button class="back-btn" onclick="goHome()">
+          ← กลับหน้าหลัก
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = 'getStarted.html';
+    }
+  </script>
+</body>
+</html>

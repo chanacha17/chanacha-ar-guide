@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="styles.css"> <!-- ลิงก์ไปที่ CSS ไฟล์หลักของคุณ -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Kanit', 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: white; /* เปลี่ยนพื้นหลังเป็นสีขาว */
+            background: linear-gradient(135deg, #e0f7fa 0%, #f8f8f8 100%);
+            min-height: 100vh;
         }
+
 
         /* Main container */
         .about-container {
@@ -22,102 +25,172 @@
 
         /* Header section */
         header {
-            background-color: #7a0707;
-            padding: 30px 0;
+            background: linear-gradient(90deg, #1fa9d3 0%, #0a3d62 100%);
+            padding: 38px 0 28px 0;
             text-align: center;
-            color: white;
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(30,30,30,0.10);
+            border-radius: 0 0 32px 32px;
+            margin-bottom: 0;
         }
 
         header h1 {
             margin: 0;
-            font-size: 3em;
+            font-size: 3.2em;
             letter-spacing: 2px;
-            color: white;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-shadow: 0 4px 24px rgba(30,30,30,0.18);
+            position: relative;
+        }
+        header h1::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, #ffd700 0%, #1fa9d3 100%);
+            margin: 18px auto 0 auto;
+            border-radius: 3px;
         }
 
         header p {
-            font-size: 1.2em;
-            margin-top: 10px;
+            font-size: 1.18em;
+            margin-top: 18px;
             color: #f0e9e9;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(30,30,30,0.10);
         }
 
         /* Content section */
         .about-content {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
+            gap: 32px;
             margin-top: 40px;
         }
 
         .about-section {
-            background-color: white;
-            width: calc(50% - 40px);
-            margin: 20px;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            background: rgba(255,255,255,0.98);
+            width: 350px;
+            min-width: 280px;
+            max-width: 400px;
+            margin: 0;
+            padding: 32px 24px 24px 24px;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(30, 30, 30, 0.13);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
 
         .about-section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 16px 40px rgba(30, 30, 30, 0.18);
         }
 
         .about-section img {
             width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 12px rgba(30,30,30,0.10);
+            object-fit: cover;
+            height: 180px;
         }
 
         .about-section h2 {
             margin-top: 0;
-            color: #333;
+            color: #1fa9d3;
+            font-size: 1.4em;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .about-section p {
-            font-size: 1em;
-            color: #666;
-            line-height: 1.6;
+            font-size: 1.08em;
+            color: #444;
+            line-height: 1.7;
         }
 
         /* ปุ่มกลับไปหน้าหลัก */
         .back-to-home {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .home-button {
-            background-color: #7a0707;
+            background: linear-gradient(135deg, #1fa9d3 0%, #29b6f6 100%);
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 18px 40px;
+            border-radius: 50px;
             text-decoration: none;
             font-size: 1.2em;
-            transition: background-color 0.3s ease;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 8px 25px rgba(31, 169, 211, 0.4), 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-family: 'Kanit', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .home-button::before {
+            content: '←';
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        .home-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .home-button:hover::after {
+            left: 100%;
         }
 
         .home-button:hover {
-            background-color: #b30d0d; /* เปลี่ยนสีเมื่อเลื่อนเมาส์ */
+            background: linear-gradient(135deg, #29b6f6 0%, #1fa9d3 100%);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(31, 169, 211, 0.5), 0 8px 15px rgba(0,0,0,0.15);
+        }
+        
+        .home-button:active {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(31, 169, 211, 0.4);
         }
 
         /* Footer section */
         footer {
-            background-color: #7a0707;
+            background: linear-gradient(90deg, #1fa9d3 0%, #0a3d62 100%);
             padding: 20px 0;
             text-align: center;
             color: white;
-            margin-top: 50px;
+            margin-top: 60px;
+            font-size: 1.08em;
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 -2px 12px rgba(30,30,30,0.08);
         }
 
         footer p {
             margin: 0;
-            font-size: 1em;
         }
     </style>
 </head>
-<body>
 
+<body>
     <header>
         <h1>About Us</h1>
         <p>ยินดีต้อนรับสู่หน้าเกี่ยวกับเรา</p>
@@ -127,36 +200,32 @@
         <div class="about-content">
             <!-- Section 1: Our Mission -->
             <div class="about-section">
-                <img src="images/โปสเตอร์.jpg" alt="Our Mission">
+                <img src="images/แนะนำ.jpg" alt="Our Mission">
                 <h2>Our Mission</h2>
-                <p>เรามีเป้าหมายที่จะนำเสนอประสบการณ์ท่องเที่ยวที่ดีที่สุดให้กับคุณ ไม่ว่าคุณจะเป็นนักท่องเที่ยวในประเทศหรือต่างชาติ 
-                กรุงเทพฯ เต็มไปด้วยเสน่ห์และสถานที่ที่น่าตื่นตาตื่นใจที่เราพร้อมแนะนำ.</p>
+                <p>เรามีเป้าหมายที่จะนำเสนอประสบการณ์ท่องเที่ยวที่ดีที่สุดให้กับคุณ ไม่ว่าคุณจะเป็นนักท่องเที่ยวในประเทศหรือต่างชาติ <br>
+                เรามุ่งมั่นให้คุณสนุกกับการเที่ยวเพชรบุรี พบกับธรรมชาติ วัฒนธรรม และสถานที่สวยงามมากมาย ทุกจุดหมายเราพร้อมแนะนำให้คุณประทับใจ!</p>
             </div>
 
             <!-- Section 2: Who We Are -->
             <div class="about-section">
-                <img src="images/โปส.jpg" alt="Our Team">
+                <img src="images/me.png" alt="Our Team">
                 <h2>Who We Are</h2>
-                <p>เราทำขึ้นเพื่อคนที่รักการท่องเที่ยวและชอบในการสร้างประสบการณ์ท่องเที่ยวที่น่าจดจำ 
-                เราได้เอาเทคโนโลยีในด้านการท่องเที่ยวมาใช้เพื่อสร้างแพลตฟอร์มที่น่าสนใจและมีประโยชน์สำหรับทุกคน.</p>
+                <p>เราสร้างเว็บนี้ขึ้นมาเพื่อให้การท่องเที่ยวเพชรบุรีสนุกและง่ายขึ้น ด้วยเทคโนโลยีทันสมัยและข้อมูลที่คัดสรรมาอย่างดี ทุกคนจะได้สัมผัสประสบการณ์ใหม่ ๆ ที่น่าประทับใจ!</p>
             </div>
 
             <!-- Section 3: Our Vision -->
             <div class="about-section">
-                <img src="images/pp.jpg" alt="Our Vision">
+                <img src="images/To.png" alt="Our Vision">
                 <h2>Our Vision</h2>
-                <p>เรามุ่งหวังที่จะเป็นแหล่งข้อมูลที่สำคัญและมีประสิทธิภาพในการแนะนำสถานที่ท่องเที่ยวต่าง ๆ 
-                ด้วยการผสมผสานเทคโนโลยี AR/VR เพื่อให้การท่องเที่ยวกลายเป็นเรื่องง่ายและสนุกยิ่งขึ้น.</p>
+                <p>เราต้องการให้ทุกคนเข้าถึงข้อมูลท่องเที่ยวเพชรบุรีได้ง่ายและทันสมัย พร้อมสัมผัสประสบการณ์ใหม่ ๆ ผ่านเทคโนโลยี AR/VR ที่ช่วยให้การเดินทางสนุกและน่าตื่นเต้นยิ่งขึ้น!</p>
             </div>
 
-            <!-- Section 4: Contact Us -->
+            <!-- Section 4: MindAR Technology -->
             <div class="about-section">
-          <img src="images/mindar.jpg" alt="MindAR Technology">
-          <h2>MindAR</h2>
-          <p>เราใช้เทคโนโลยี MindAR ซึ่งเป็นหนึ่งในเครื่องมือ Augmented Reality (AR) ที่ทันสมัย 
-          เพื่อเพิ่มมิติใหม่ในการสำรวจและเรียนรู้สถานที่ท่องเที่ยวผ่านสมาร์ทโฟนหรืออุปกรณ์ AR ของคุณ 
-          ด้วย MindAR คุณสามารถโต้ตอบกับสภาพแวดล้อมจริงผ่านการแสดงผลแบบดิจิทัลได้อย่างราบรื่นและมีประสิทธิภาพ.</p>
-          </div>
+                <img src="images/AR.png" alt="MindAR Technology">
+                <h2>MindAR</h2>
+                <p>เรานำ MindAR มาใช้เพื่อให้คุณได้สัมผัสประสบการณ์ท่องเที่ยวแบบ AR ในเพชรบุรี ผ่าน สมาร์ทโฟนหรืออุปกรณ์ของคุณ เพิ่มความสนุกและความสมจริงให้กับการสำรวจสถานที่ต่าง ๆ!</p>
+            </div>
         </div>
         <!-- ปุ่มกลับไปหน้าหลัก -->
         <div class="back-to-home">
@@ -164,9 +233,9 @@
         </div>
     </div>
 
-    <footer>
-        <p>© 2024 Bangkok Tourism. All rights reserved.</p>
-    </footer>
+        <footer>
+            <p>© 2025 Phetchaburi Tourism. All rights reserved.</p>
+        </footer>
 
 </body>
 </html>
