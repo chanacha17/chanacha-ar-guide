@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Marker Images - ใช้สำหรับสแกน</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+        
+        .instructions {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .instructions h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+        }
+        
+        .instructions p {
+            margin: 8px 0;
+            font-size: 1.05em;
+        }
+        
+        .marker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .marker-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .marker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #1fa9d3;
+        }
+        
+        .marker-card h3 {
+            color: #1fa9d3;
+            margin: 0 0 15px 0;
+            font-size: 1.2em;
+        }
+        
+        .marker-image {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .marker-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .marker-info {
+            margin-top: 15px;
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #1fa9d3, #0077a3);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(135deg, #0077a3, #005577);
+            transform: translateY(-2px);
+        }
+        
+        .scanner-links {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .scanner-links h3 {
+            margin: 0 0 20px 0;
+            font-size: 1.4em;
+        }
+        
+        .scanner-btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            margin: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .scanner-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(0,0,0,0.9);
+            transform: scale(1.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            cursor: pointer;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+            
+            .marker-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='getStarted.html'">←</button>
+    
+    <div class="container">
+        <h1>🎯 AR Marker Images</h1>
+        <div class="subtitle">
+            ใช้รูปภาพเหล่านี้สำหรับทดสอบ AR Scanner<br>
+            คลิกเพื่อดูขนาดใหญ่ หรือดาวน์โหลดไปใช้งาน
+        </div>
+        
+        <div class="instructions">
+            <h3>📱 วิธีใช้งาน</h3>
+            <p><strong>1.</strong> เลือกรูป marker ที่ต้องการ (แนะนำ P1 สำหรับทดสอบครั้งแรก)</p>
+            <p><strong>2.</strong> ดาวน์โหลดหรือแสดงรูปบนหน้าจออื่น/พิมพ์ออกมา</p>
+            <p><strong>3.</strong> เปิด AR Scanner และส่องกล้องไปที่รูป marker</p>
+            <p><strong>4.</strong> โมเดล 3D จะปรากฏบนรูป marker</p>
+        </div>
+        
+        <div class="marker-grid">
+            <div class="marker-card">
+                <h3>🏖️ P1 - หาดชะอำ</h3>
+                <img src="images/P1.png" alt="Marker P1 - หาดชะอำ" class="marker-image" onclick="openModal('images/P1.png')">
+                <div class="marker-info">
+                    <p>Target Index: 0</p>
+                    <p>Model: Brilliant.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P1.png', 'P1-Cha-am-Beach.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>🏛️ P2 - วัดถ้ำแชง</h3>
+                <img src="images/P2.png" alt="Marker P2 - วัดถ้ำแชง" class="marker-image" onclick="openModal('images/P2.png')">
+                <div class="marker-info">
+                    <p>Target Index: 1</p>
+                    <p>Model: cave temple.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P2.png', 'P2-Tham-Chaeng-Temple.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>🌳 P3 - โครงการพระราชดำริ</h3>
+                <img src="images/P3.png" alt="Marker P3 - โครงการพระราชดำริ" class="marker-image" onclick="openModal('images/P3.png')">
+                <div class="marker-info">
+                    <p>Target Index: 2</p>
+                    <p>Model: Epic Jaagub-Habbi.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P3.png', 'P3-Chang-Hua-Man-Royal-Project.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>⛰️ P4 - วัดเขาบันไดอิฐ</h3>
+                <img src="images/P4.png" alt="Marker P4 - วัดเขาบันไดอิฐ" class="marker-image" onclick="openModal('images/P4.png')">
+                <div class="marker-info">
+                    <p>Target Index: 3</p>
+                    <p>Model: Fantabulous Turing.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P4.png', 'P4-Khao-Bandai-It-Temple.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>🏛️ P5 - พระนครคีรี</h3>
+                <img src="images/P5.png" alt="Marker P5 - พระนครคีรี" class="marker-image" onclick="openModal('images/P5.png')">
+                <div class="marker-info">
+                    <p>Target Index: 4</p>
+                    <p>Model: Fantastic Jaban-Wolt.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P5.png', 'P5-Phra-Nakhon-Khiri.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>�️ P6 - วัดขอย</h3>
+                <img src="images/P6.png" alt="Marker P6 - วัดขอย" class="marker-image" onclick="openModal('images/P6.png')">
+                <div class="marker-info">
+                    <p>Target Index: 5</p>
+                    <p>Model: Khoi-Temple.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P6.png', 'P6-Khoi-Temple.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>� P7 - พระรามราชนิเวศน์</h3>
+                <img src="images/P7.png" alt="Marker P7 - พระรามราชนิเวศน์" class="marker-image" onclick="openModal('images/P7.png')">
+                <div class="marker-info">
+                    <p>Target Index: 6</p>
+                    <p>Model: Phra-Ram-Ratchaniwet.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P7.png', 'P7-Phra-Ram-Ratchaniwet.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>�️ P8 - วัดมหาธาตุวรวิหาร</h3>
+                <img src="images/P8.png" alt="Marker P8 - วัดมหาธาตุวรวิหาร" class="marker-image" onclick="openModal('images/P8.png')">
+                <div class="marker-info">
+                    <p>Target Index: 7</p>
+                    <p>Model: Wat-Mahathat-Worawihan.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P8.png', 'P8-Wat-Mahathat-Worawihan.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>🏛️ P9 - วัดปากนอกทะเล</h3>
+                <img src="images/P9.png" alt="Marker P9 - วัดปากนอกทะเล" class="marker-image" onclick="openModal('images/P9.png')">
+                <div class="marker-info">
+                    <p>Target Index: 8</p>
+                    <p>Model: Wat-Pak-Nok-Thale.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P9.png', 'P9-Wat-Pak-Nok-Thale.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+            
+            <div class="marker-card">
+                <h3>⛰️ P10 - วัดถ้ำเขาย้อย</h3>
+                <img src="images/P10.png" alt="Marker P10 - วัดถ้ำเขาย้อย" class="marker-image" onclick="openModal('images/P10.png')">
+                <div class="marker-info">
+                    <p>Target Index: 9</p>
+                    <p>Model: Khao-Yoi-Cave-Temple.glb</p>
+                    <button class="download-btn" onclick="downloadImage('images/P10.png', 'P10-Khao-Yoi-Cave-Temple.png')">📥 ดาวน์โหลด</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for enlarged images -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Enlarged marker">
+        </div>
+    </div>
+    
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+        
+        function downloadImage(imageSrc, filename) {
+            const link = document.createElement('a');
+            link.href = imageSrc;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

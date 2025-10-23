@@ -255,6 +255,7 @@
         <button id="placesMainButton" type="button"><span style="font-size:1.35em;">📌</span> <span class="place-title-text">Place of Interest</span></button>
         <button id="mapsButton" type="button"><span style="font-size:1.35em;">🗺️</span> Maps</button>
         <button id="scannerButton" type="button"><span style="font-size:1.35em;">🔍</span> Scanner</button>
+        <button id="markersButton" type="button"><span style="font-size:1.35em;">🎯</span> AR Markers</button>
         <button id="foodHotelButton" type="button" onclick="window.location.href='food-hotel.html'"><span style="font-size:1.35em;">🍽️</span><span style="font-size:1.35em;">🏨</span> Food & Hotel</button>
         <button id="aboutButton" type="button"><span style="font-size:1.35em; color:#6c63ff;">👤</span> About</button>
     </div>
@@ -270,7 +271,7 @@
           <li><a href="Phra-Nakhon-Khiri-Historical-Park.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P5</span> Phra Nakhon Khiri Historical Park</a></li>
           <li><a href="Khoi-Temple.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P6</span> Khoi Temple</a></li>
           <li><a href="Phra-Ram-Ratchaniwet.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P7</span> Phra Ram Ratchaniwet</a></li>
-          <li><a href="Wat-Mahathat-Worawihan.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P8</span> Wat Mahathat Worawihan</a></li>
+          <li><a href="Wat-Mahathat-Worawihan-new.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P8</span> Wat Mahathat Worawihan</a></li>
           <li><a href="Wat-Pak-Nok-Thale.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P9</span> Wat Pak Nok Thale</a></li>
           <li><a href="Khao-Yoi-Cave-Temple.html" style="display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;color:#1fa9d3;font-size:1.13em;"><span style='background:#e0f7fa;border-radius:8px;padding:4px 12px;font-weight:bold;'>P10</span> Khao Yoi Cave Temple</a></li>
         </ul>
@@ -279,16 +280,46 @@
 </header>
 
     <div id="ar-container">
-        <a-scene embedded mindar="imageTargetSrc: markers/targets1.mind">
-            <a-marker targetIndex="0"> <a-entity gltf-model="model\Cha-am.glb" scale="0.5 0.5 0.5"></a-entity>
+        <a-scene embedded mindar="imageTargetSrc: markers/targets.mind">
+            <!-- P1: Cha-am Beach -->
+            <a-marker targetIndex="0"> 
+                <a-entity gltf-model="model/Cha-am.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <a-marker targetIndex="1"> <a-entity gltf-model="model\Tham-Chaeng.glb" scale="0.5 0.5 0.5"></a-entity>
+            <!-- P2: Tham Chaeng Temple -->
+            <a-marker targetIndex="1"> 
+                <a-entity gltf-model="model/Tham-Chaeng.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <a-marker targetIndex="2"> <a-entity gltf-model="model\Chang-Hua-Man.glb" scale="0.5 0.5 0.5"></a-entity>
+            <!-- P3: The Chang Hua Man Royal Project -->
+            <a-marker targetIndex="2"> 
+                <a-entity gltf-model="model/Chang-Hua-Man.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <a-marker targetIndex="3"> <a-entity gltf-model="model\Khao-Bandai-It.glb" scale="0.5 0.5 0.5"></a-entity>
+            <!-- P4: Khao Bandai It Temple -->
+            <a-marker targetIndex="3"> 
+                <a-entity gltf-model="model/Khao-Bandai-It.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
-            <a-marker targetIndex="4"> <a-entity gltf-model="model\Phra-Nakhon-Khiri.glb" scale="0.5 0.5 0.5"></a-entity>
+            <!-- P5: Phra Nakhon Khiri Historical Park -->
+            <a-marker targetIndex="4"> 
+                <a-entity gltf-model="model/Phra-Nakhon-Khiri.glb" scale="0.5 0.5 0.5"></a-entity>
+            </a-marker>
+            <!-- P6: Khoi Temple -->
+            <a-marker targetIndex="5"> 
+                <a-entity gltf-model="model/Khoi-Temple.glb" scale="0.5 0.5 0.5"></a-entity>
+            </a-marker>
+            <!-- P7: Phra Ram Ratchaniwet -->
+            <a-marker targetIndex="6"> 
+                <a-entity gltf-model="model/Phra-Ram-Ratchaniwet.glb" scale="0.5 0.5 0.5"></a-entity>
+            </a-marker>
+            <!-- P8: Wat Mahathat Worawihan -->
+            <a-marker targetIndex="7"> 
+                <a-entity gltf-model="model/Wat-Mahathat-Worawihan.glb" scale="0.5 0.5 0.5"></a-entity>
+            </a-marker>
+            <!-- P9: Wat Pak Nok Thale -->
+            <a-marker targetIndex="8"> 
+                <a-entity gltf-model="model/Wat-Pak-Nok-Thale.glb" scale="0.5 0.5 0.5"></a-entity>
+            </a-marker>
+            <!-- P10: Khao Yoi Cave Temple -->
+            <a-marker targetIndex="9"> 
+                <a-entity gltf-model="model/Khao-Yoi-Cave-Temple.glb" scale="0.5 0.5 0.5"></a-entity>
             </a-marker>
             <a-entity camera></a-entity>
         </a-scene>
@@ -332,7 +363,7 @@
                 <img src="images/P7.png" alt="Phra Ram Ratchานิเวศน์">
                 <p>"สัมผัสชีวิตราชวงศ์แบบใกล้ชิดในพิพิธภัณฑ์มีชีวิต"</p>
             </section>
-            <section id="Wat Mahathat Worawihan" onclick="navigateTo('Wat-Mahathat-Worawihan.html')" style="cursor:pointer; opacity:1;">
+            <section id="Wat Mahathat Worawihan" onclick="navigateTo('Wat-Mahathat-Worawihan-new.html')" style="cursor:pointer; opacity:1;">
                 <h2>Wat Mahathat Worawihan</h2>
                 <img src="images/P8.png" alt="Wat Mahathat Worawihan">
                 <p>ยอดพระปรางค์ 5 ยอด ที่ภายในบรรจุพระบรมสารีริกธาตุ</p>
@@ -372,11 +403,20 @@
         const foodHotelButton = document.getElementById('foodHotelButton');
         const aboutButton = document.getElementById('aboutButton');
         const scannerButton = document.getElementById('scannerButton');
+        const markersButton = document.getElementById('markersButton');
         // Event listener for Scanner button
         if (scannerButton) {
             scannerButton.addEventListener("click", () => {
                 dropdownMenu.classList.remove("show");
-                window.location.href = 'scanner.html';
+                window.location.href = 'scanner-simple.html';
+            });
+        }
+
+        // Event listener for AR Markers button
+        if (markersButton) {
+            markersButton.addEventListener("click", () => {
+                dropdownMenu.classList.remove("show");
+                window.location.href = 'markers-gallery.html';
             });
         }
 
@@ -396,6 +436,7 @@
                 placesPopup.style.display = 'block';
                 mapsButton.style.display = 'none'; // ซ่อน Maps
                 scannerButton.style.display = 'none'; // ซ่อน Scanner
+                markersButton.style.display = 'none'; // ซ่อน AR Markers
                 foodHotelButton.style.display = 'none'; // ซ่อน Food & Hotel
                 aboutButton.style.display = 'none'; // ซ่อน About
                 dropdownMenu.classList.remove('show');
@@ -408,6 +449,7 @@
                 // นำปุ่มอื่นๆ กลับมาแสดง
                 mapsButton.style.display = 'flex'; // เปลี่ยนจาก '' เป็น 'flex' เพื่อให้แสดงผลถูกต้องตาม style
                 scannerButton.style.display = 'flex';
+                markersButton.style.display = 'flex';
                 foodHotelButton.style.display = 'flex';
                 aboutButton.style.display = 'flex';
             };
