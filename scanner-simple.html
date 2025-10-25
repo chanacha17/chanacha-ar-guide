@@ -41,74 +41,76 @@
   <body> 
     <button class="exit-button" onclick="exitScanner()">ออกจากการสแกน</button> 
     <div id="ar-container"> 
-      <a-scene mindar-image="imageTargetSrc: markers/targets.mind;" embedded>  
+      <a-scene mindar-image="imageTargetSrc: markers/targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" embedded>
+        
+        <!-- Assets ต้องอยู่ภายใน scene --> 
+        <a-assets>
+          <a-asset-item id="model-cha-am" src="model/Cha-am.glb"></a-asset-item>
+          <a-asset-item id="model-tham-chaeng" src="model/Tham-Chaeng.glb"></a-asset-item>
+          <a-asset-item id="model-the-chang" src="model/The-Chang.glb"></a-asset-item>
+          <a-asset-item id="model-khao" src="model/Khao.glb"></a-asset-item>
+          <a-asset-item id="model-phra-nakhon" src="model/Phra-Nakhon.glb"></a-asset-item>
+          <a-asset-item id="model-khoi-tem" src="model/Khoi-Tem.glb"></a-asset-item>
+          <a-asset-item id="model-phra-ram" src="model/Phra-Ram.glb"></a-asset-item>
+          <a-asset-item id="model-wat-mahathat" src="model/Wat-Mahathat.glb"></a-asset-item>
+          <a-asset-item id="model-wat-pak" src="model/Wat-Pak.glb"></a-asset-item>
+          <a-asset-item id="model-khao-yoi" src="model/Khao-Yoi.glb"></a-asset-item>
+        </a-assets>
+
         <!-- กล้อง --> 
-        <a-camera></a-camera> 
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <!-- P1: Cha-am Beach --> 
-        <a-entity mindar-image-target="targetIndex: 0" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="\model\Cha-am.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 0" class="model">
+          <a-gltf-model src="model/Cha-am.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P2: Tham Chaeng Temple --> 
-        <a-entity mindar-image-target="targetIndex: 1" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="\model\Tham-Chaeng.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 1" class="model">
+          <a-gltf-model src="model/Tham-Chaeng.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P3: The Chang Hua Man Royal Project --> 
-        <a-entity mindar-image-target="targetIndex: 2" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="model/Tremendous Robo (1).glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 2" class="model">
+          <a-gltf-model src="model/The-Chang.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P4: Khao Bandai It Temple --> 
-        <a-entity mindar-image-target="targetIndex: 3" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="model/Fantabulous Jaban (1).glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 3" class="model">
+          <a-gltf-model src="model/Khao.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P5: Phra Nakhon Khiri Historical Park --> 
-        <a-entity mindar-image-target="targetIndex: 4" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="model/Spectacular Jaagub.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 4" class="model">
+          <a-gltf-model src="model/Phra-Nakhon.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P6: Khoi Temple --> 
-        <a-entity mindar-image-target="targetIndex: 5" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="model/Smooth Borwo-Hillar.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 5" class="model">
+          <a-gltf-model src="model/Khoi-Tem.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P7: Phra Ram Ratchaniwet --> 
-        <a-entity mindar-image-target="targetIndex: 6" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="model/Epic Jaagub-Habbi.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 6" class="model">
+          <a-gltf-model src="model/Phra-Ram.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P8: Wat Mahathat Worawihan --> 
-        <a-entity mindar-image-target="targetIndex: 7" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="model/Fantastic Jaban-Wolt (1).glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 7" class="model">
+          <a-gltf-model src="model/Wat-Mahathat.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P9: Wat Pak Nok Thale --> 
-        <a-entity mindar-image-target="targetIndex: 8" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="model/Terrific Curcan.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 8" class="model">
+          <a-gltf-model src="model/Wat-Pak.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
 
         <!-- P10: Khao Yoi Cave Temple --> 
-        <a-entity mindar-image-target="targetIndex: 9" class="model" rotation="0 0 0"> 
-          <a-entity gltf-model="model/Mighty Borwo (1).glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 9" class="model">
+          <a-gltf-model src="model/Khao-Yoi.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"></a-gltf-model>
         </a-entity>
       </a-scene> 
     </div> 
-
-    <a-assets> 
-      <a-asset-item id="cha-am" src="model/Fantabulous Turing.glb"></a-asset-item> 
-      <a-asset-item id="tham-chaeng" src="model/Tremendous Robo (1).glb"></a-asset-item> 
-      <a-asset-item id="chang-hua-man" src="model/Fantabulous Jaban (1).glb"></a-asset-item> 
-      <a-asset-item id="khao-bandai-it" src="model/Spectacular Jaagub.glb"></a-asset-item> 
-      <a-asset-item id="phra-nakhon-khiri" src="model/Smooth Borwo-Hillar.glb"></a-asset-item> 
-      <a-asset-item id="khoi-temple" src="model/Tremendous Jaagub-Wluff.glb"></a-asset-item> 
-      <a-asset-item id="phra-ram-ratchaniwet" src="model/Epic Jaagub-Habbi.glb"></a-asset-item> 
-      <a-asset-item id="wat-mahathat" src="model/Fantastic Jaban-Wolt (1).glb"></a-asset-item> 
-      <a-asset-item id="wat-pak-nok-thale" src="model/Terrific Curcan.glb"></a-asset-item> 
-      <a-asset-item id="khao-yoi-cave" src="model/Mighty Borwo (1).glb"></a-asset-item> 
-    </a-assets> 
 
     <script> 
       function exitScanner() { 
