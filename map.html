@@ -31,10 +31,30 @@
     #mapImage {
       width: 100%;
       max-width: 700px;
+      height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.12);
       margin-bottom: 24px;
+      display: block;
+      object-fit: contain;
     }
+    
+    @media (max-width: 768px) {
+      .map-container {
+        margin-top: 20px;
+        padding: 16px;
+        width: 98vw;
+      }
+      #mapImage {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+      .back-btn {
+        padding: 14px 32px;
+        font-size: 1.1em;
+      }
+    }
+    
     .back-btn {
       background: linear-gradient(135deg, #1fa9d3 0%, #29b6f6 100%);
       color: white;
@@ -91,8 +111,8 @@
 </head>
 <body>
   <div class="map-container">
-    <h2 style="margin-bottom:18px;">แผนที่จังหวัดเพชรบุรี</h2>
-    <img id="mapImage" src="images/map.png" alt="แผนที่จังหวัดเพชรบุรี">
+    <h2 style="margin-bottom:18px; color: #1fa9d3; font-size: 1.8em; text-align: center;">🗺️ แผนที่จังหวัดเพชรบุรี</h2>
+    <img id="mapImage" src="images/map.png" alt="แผนที่จังหวัดเพชรบุรี" loading="eager">
     <button class="back-btn" onclick="goHome()">กลับหน้าหลัก</button>
   </div>
   <script>
