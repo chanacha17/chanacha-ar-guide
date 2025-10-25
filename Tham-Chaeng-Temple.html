@@ -387,7 +387,23 @@
             </div>
         </div>
 
-        <model-viewer src="\model\Tham-Chaeng.glb" alt="วัดถ้ำแจ้ง 3D" auto-rotate camera-controls scale="1.5 1.5 1.5"></model-viewer>
+        <model-viewer 
+            src="model/Tham-Chaeng.glb" 
+            alt="โมเดล 3D วัดถ้ำแจ้ง" 
+            auto-rotate 
+            camera-controls 
+            shadow-intensity="1"
+            exposure="1"
+            camera-orbit="0deg 75deg 2m"
+            field-of-view="30deg"
+            min-camera-orbit="auto auto 1m"
+            max-camera-orbit="auto auto 5m"
+            style="width: 100%; height: 500px; min-height: 400px; background-color: #e3f2fd;"
+            loading="eager"
+            reveal="auto"
+            ar
+            ar-modes="webxr scene-viewer quick-look">
+        </model-viewer>
         <a href="getStarted.html">กลับไปที่หน้าหลัก</a>
     </main>
 
