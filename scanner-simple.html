@@ -35,11 +35,52 @@
       } 
       .exit-button:hover { 
         background-color: #ff1c1c; 
-      } 
+      }
+      
+      /* Info Panel สำหรับแสดงข้อมูลสถานที่ */
+      #info-panel {
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        z-index: 10;
+        display: none;
+        max-width: 90%;
+        width: 350px;
+      }
+      
+      #info-panel h2 {
+        margin: 0 0 10px 0;
+        color: #2c5f2d;
+        font-size: 20px;
+      }
+      
+      #info-panel p {
+        margin: 5px 0;
+        color: #333;
+        font-size: 14px;
+      }
+      
+      #info-panel .distance {
+        color: #ff6b35;
+        font-weight: bold;
+      }
     </style> 
   </head> 
   <body> 
-    <button class="exit-button" onclick="exitScanner()">ออกจากการสแกน</button> 
+    <button class="exit-button" onclick="exitScanner()">ออกจากการสแกน</button>
+    
+    <!-- Info Panel สำหรับแสดงข้อมูล -->
+    <div id="info-panel">
+      <h2 id="place-name"></h2>
+      <p id="place-description"></p>
+      <p class="distance" id="place-distance"></p>
+    </div>
+    
     <div id="ar-container"> 
       <a-scene mindar-image="imageTargetSrc: markers/targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" embedded>
         
