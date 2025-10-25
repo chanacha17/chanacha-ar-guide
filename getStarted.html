@@ -172,6 +172,12 @@
             object-fit: contain; /* Preserve aspect ratio */
             border-radius: 10px 10px 0 0; /* Rounded corners */
         }
+        
+        /* Override img styles for map image specifically */
+        #mapImage {
+            height: auto !important; /* Override the 150px height */
+            border-radius: 12px !important; /* Override the top-only border radius */
+        }
 
         /* Style for scanner */
         #scannerContainer { 
